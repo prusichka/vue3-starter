@@ -9,10 +9,11 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
-    "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
     "lint:eslint": "eslint . --fix",
     "lint": "run-s lint:*",
-    "format": "prettier --write src/"
+    "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "pre-commit": "npm run lint:oxlint && npm run format"
   },
   "dependencies": {
     "pinia": "^3.0.1",

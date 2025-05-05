@@ -1,36 +1,27 @@
 <template>
-    <component 
-        :is="icon" 
-        v-if="icon" 
-        class="base-icon" 
-        :class="sizeClass" 
-        :style="{ color }" 
-    />
+  <component :is="icon" v-if="icon" class="base-icon" :class="sizeClass" :style="{ color }" />
 </template>
 
 <script setup lang="ts">
-import { computed, defineAsyncComponent } from "vue";
+import { computed, defineAsyncComponent } from 'vue'
 
 interface Props {
-    name: string
-    size?: 'sm' | 'md' | 'lg'
-    color?: string
+  name: string
+  size?: 'sm' | 'md' | 'lg'
+  color?: string
 }
 
 const props = defineProps<Props>()
 
 const sizeClass = computed(() => {
-    return {
-        sm: 'base-icon--sm',
-        md: 'base-icon--md',
-        lg: 'base-icon--lg',
-    }[props.size ?? 'md']
+  return {
+    sm: 'base-icon--sm',
+    md: 'base-icon--md',
+    lg: 'base-icon--lg',
+  }[props.size ?? 'md']
 })
 
-const icon = defineAsyncComponent(() =>
-    import(`@/assets/icons/${props.name}.svg`)
-)
-
+const icon = defineAsyncComponent(() => import(`@/assets/icons/${props.name}.svg`))
 </script>
 
 <style scoped lang="scss">
